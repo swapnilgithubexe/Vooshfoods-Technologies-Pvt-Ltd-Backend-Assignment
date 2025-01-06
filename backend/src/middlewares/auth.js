@@ -28,6 +28,19 @@ export const auth = async (req, res, next) => {
   }
 }
 
+export const isAdmin = (roles) => (req, res, next) => {
+  if (!roles.includes(req.user.role)) {
+    return res.status(401).json({
+      status: 401,
+      data: null,
+      message: "Unauthorized Access",
+      error: null
+    });
+  }
+  next();
+
+}
+
 export const generateToken = (user) => {
   return jwt.sign({
     id: user._id, role: user.role
