@@ -14,7 +14,7 @@ const port = process.env.PORT || 5500;
 app.use(express.json());
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/admin", adminRouter);
-app.use("/api/v1/artist", artistRouter);
+app.use("/api/v1/artists", artistRouter);
 
 app.listen(port, () => {
   dbConnection();
