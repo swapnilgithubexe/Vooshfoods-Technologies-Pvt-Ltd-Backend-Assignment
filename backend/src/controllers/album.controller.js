@@ -56,3 +56,54 @@ export const getSingleAlbum = tryCatchFunction(async (req, res, next) => {
     error: null
   });
 });
+
+//add an album
+export const addAlbum = tryCatchFunction(async (req, res, next) => {
+  const newAlbum = new album(req.body);
+  await album.save();
+  return res.status(201).json({
+    status: 201,
+    data: null,
+    message: "Album created successfully",
+    error: null
+  })
+})
+
+//update an album
+export const updateAlbum = tryCatchFunction(async (req, res, next) => {
+  const updatedAlbum = await album.findByIdAndUpdate(req.params.id, req.body);
+  if (!updatedAlbum) {
+    res.status(404).json({
+      status: 404,
+      data: null,
+      message: "Resource not found",
+      error: null
+    });
+  };
+  res.status(204).json({
+    status: 204,
+    data: null,
+    message: "Album updated successfully",
+    error: null
+  });
+});
+
+//delete an album
+export const deleteAlbum = tryCatchFunction(async (req, res, next) => {
+  const deletedAlbum = await album.findByIdAndDelete(req.params.id);
+  if (!deletedAlbum) {
+    return res.status(404).json({
+      status: 404,
+      data: null,
+      message: "Rescource doesn't exist",
+      error: null
+    })
+  }
+
+  res.status(200).json({
+    status: 200,
+    data: null,
+    message: "Album creadted successfully",
+    error: null
+  });
+});
