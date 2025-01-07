@@ -3,8 +3,6 @@ import User from "../models/userModel.js";
 
 export const auth = async (req, res, next) => {
   try {
-    console.log("Auth middleware hit");
-
     const token = req.headers.authorization?.split(' ')[1];
     if (!token) {
       return res.status(401).json({

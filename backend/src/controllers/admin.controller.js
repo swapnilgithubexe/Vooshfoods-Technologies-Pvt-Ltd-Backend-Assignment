@@ -66,7 +66,7 @@ export const addNewUser = tryCatchFunction(async (req, res, next) => {
 
 //Delete a user
 export const deleteUser = tryCatchFunction(async (req, res, next) => {
-  console.log("api hit");
+  // console.log("api hit");
 
   const { id } = req.params;
 
