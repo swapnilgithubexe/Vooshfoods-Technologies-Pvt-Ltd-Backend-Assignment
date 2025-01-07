@@ -5,6 +5,7 @@ import { dbConnection } from "./config/database.js";
 import { userRouter } from "./src/routes/user.routes.js";
 import { adminRouter } from "./src/routes/admin.routes.js";
 import { artistRouter } from "./src/routes/artist.routes.js";
+import { albumRouter } from "./src/routes/album.routes.js";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/artists", artistRouter);
+app.use("/api/v1/albums", albumRouter);
 
 app.listen(port, () => {
   dbConnection();
