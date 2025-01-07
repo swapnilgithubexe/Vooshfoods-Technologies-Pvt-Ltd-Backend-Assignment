@@ -72,3 +72,31 @@ export const login = tryCatchFunction(async (req, res, next) => {
     error: null
   })
 });
+
+//Update password
+export const updatePassword = tryCatchFunction(async (req, res, next) => {
+  const { old_password, new_password } = req.body;
+  const user = await User.findById(req.user._id);
+
+  if (!user) {
+    return res.status(404).json({
+      status: 404,
+      data: null,
+      message: "User not found",
+      error: null
+    });
+  }
+  const isPasswordMatched = await user.comparePassword(old_password);
+  if (!isPasswordMatched) {
+    return res.status(400).json({
+      status: 400,
+      data: null,
+      message: "Bad Request",
+      error: null
+    });
+  }
+  user.password = new_password;
+  await user.save();
+
+  res.status(204).json();
+})
