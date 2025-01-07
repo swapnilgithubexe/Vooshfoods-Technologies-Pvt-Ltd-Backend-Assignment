@@ -3,8 +3,11 @@ export const tryCatchFunction = (handler) => {
     try {
       await handler(req, res, next);
     } catch (error) {
-      res.status(500).json({
-        message: error.message
+      res.status(400).json({
+        status: 400,
+        data: null,
+        message: error.message,
+        error: null
       });
     }
   };
