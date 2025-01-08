@@ -86,4 +86,21 @@ export const addTrack = tryCatchFunction(async (req, res, next) => {
   });
 });
 
-//update 
+//update a track
+export const updateTrack = tryCatchFunction(async (req, res, next) => {
+  const updatedTrack = await track.findByIdAndUpdate(req.params.id, req.body);
+  if (!updatedTrack) {
+    return res.status(404).json({
+      status: 404,
+      data: null,
+      message: "Resources Doesn't Exist",
+      error: null
+    });
+  };
+  return res.status(204).json({
+    status: 204,
+    data: null,
+    message: "Track Updated Successfully",
+    error: null
+  });
+});
