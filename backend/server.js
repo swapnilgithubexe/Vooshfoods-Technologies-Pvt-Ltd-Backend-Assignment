@@ -22,6 +22,10 @@ app.use("/api/v1/albums", albumRouter);
 app.use("/api/v1/tracks", trackRouter);
 app.use("/api/v1/favorites", favoriteRouter);
 
+app.get("/", (req, res) => {
+  res.send("<h1> Welcome Buddy</h1>")
+});
+
 app.listen(port, () => {
   dbConnection();
   console.log(`Server is up and running on port number: ${port}`);
