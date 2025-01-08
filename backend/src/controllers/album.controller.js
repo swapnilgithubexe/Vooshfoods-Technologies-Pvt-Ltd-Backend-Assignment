@@ -14,7 +14,7 @@ export const getAllAlbums = tryCatchFunction(async (req, res, next) => {
   };
   const albumQuery = {};
   if (artist_id !== undefined) {
-    albumQuery[artist._id] = artist_id;
+    albumQuery.artist = artist_id;
   };
   if (hidden !== undefined) {
     albumQuery.hidden = Boolean(hidden);
