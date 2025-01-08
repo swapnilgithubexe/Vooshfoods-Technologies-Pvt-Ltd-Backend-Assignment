@@ -44,7 +44,7 @@ export const getSingleArtist = tryCatchFunction(async (req, res, next) => {
 });
 
 //create a new artist
-export const createArtist = tryCatchFunction(async (req, res, next) => {
+export const addArtist = tryCatchFunction(async (req, res, next) => {
   const newArtist = new artist(req.body);
   await newArtist.save();
   res.status(201).json({

@@ -8,6 +8,6 @@ export const albumRouter = express.Router();
 //Routes
 albumRouter.get("/", auth, getAllAlbums)
 albumRouter.post("/:id", auth, getSingleAlbum);
-albumRouter.post("/add-new-album", auth, isAdmin(["admin", "editor"]), addAlbum);
-albumRouter.post("/update/:id", auth, isAdmin(["admin", "auth"]), updateAlbum);
-albumRouter.delete("/delete/:id", auth, isAdmin(["admin", "editor"]), deleteAlbum);
+albumRouter.post("/add-album", auth, isAdmin(["admin", "editor"]), addAlbum);
+albumRouter.post("/:id", auth, isAdmin(["admin", "auth"]), updateAlbum);
+albumRouter.delete("/:id", auth, isAdmin(["admin", "editor"]), deleteAlbum);

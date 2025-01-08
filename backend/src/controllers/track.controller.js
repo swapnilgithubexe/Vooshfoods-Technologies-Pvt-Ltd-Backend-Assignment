@@ -104,3 +104,22 @@ export const updateTrack = tryCatchFunction(async (req, res, next) => {
     error: null
   });
 });
+
+//delete a track
+export const deleteTrack = tryCatchFunction(async (req, res, next) => {
+  const deletedTrack = await track.findByIdAndDelete(req.params.id)
+  if (!deletedTrack) {
+    return res.status(404).json({
+      status: 404,
+      data: null,
+      message: "Resource doesn't exist",
+      error: null
+    });
+  };
+  return res.status(200).json({
+    status: 200,
+    data: null,
+    message: "Track Deleted Successfully",
+    error: null
+  });
+});
